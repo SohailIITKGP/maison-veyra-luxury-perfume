@@ -1,0 +1,233 @@
+import type { Family, Product, Variant } from "@/types";
+
+/** Standard eau de parfum ladder. Prices in cents. */
+const ladder = (slug: string, [p30, p50, p100]: [number, number, number]): Variant[] => [
+  { id: `${slug}-30`, label: "30 ml", sizeMl: 30, price: p30 },
+  { id: `${slug}-50`, label: "50 ml", sizeMl: 50, price: p50 },
+  { id: `${slug}-100`, label: "100 ml", sizeMl: 100, price: p100 },
+];
+
+const gallery = (slug: string, name: string, scene: string) => [
+  { src: `/images/products/${slug}-1.webp`, alt: `${name} eau de parfum, 100 ml glass bottle on a stone plinth in soft window light` },
+  { src: `/images/products/${slug}-2.webp`, alt: `Close view of the ${name} label and arched cap` },
+  { src: `/images/products/${slug}-3.webp`, alt: `${name} at dusk, ${scene}` },
+];
+
+export const products: Product[] = [
+  {
+    slug: "santal-no-04",
+    kind: "fragrance",
+    name: "Santal No. 04",
+    number: "04",
+    family: "woody",
+    signature: true,
+    tagline: "Warm wood, held close.",
+    summary: "Creamy sandalwood and cardamom over a soft leather base. Intimate, warm, unhurried.",
+    description: [
+      "Santal No. 04 is written around the moment a room still holds the warmth of someone who has just left it. Creamy sandalwood is lifted by green cardamom and a thread of fig leaf, then settles into suede and cedar.",
+      "It sits close to the skin and grows richer through the day — a fragrance for wool coats, late lunches and handwritten letters.",
+    ],
+    notes: {
+      top: ["Green cardamom", "Fig leaf", "Pink pepper"],
+      heart: ["Sandalwood", "Orris butter", "Violet leaf"],
+      base: ["Suede accord", "Virginia cedar", "Tonka bean"],
+    },
+    character: { intensity: 3, sillage: 2, longevity: 4, mood: ["Warm", "Intimate", "Comforting"] },
+    finder: { moments: ["day", "dusk"], texture: "woods", presence: "close" },
+    story: {
+      title: "The fourth draft",
+      body: "The house kept every version of this formula. The fourth was the first that smelled less like wood and more like the memory of a person wearing it.",
+    },
+    accent: "#B4884F",
+    images: gallery("santal-no-04", "Santal No. 04", "with sandalwood blocks in low amber light"),
+    variants: ladder("santal-no-04", [9800, 16500, 24000]),
+    defaultVariantId: "santal-no-04-50",
+  },
+  {
+    slug: "fleur-de-nuit",
+    kind: "fragrance",
+    name: "Fleur de Nuit",
+    number: "11",
+    family: "floral",
+    signature: true,
+    tagline: "A garden after dark.",
+    summary: "Tuberose and dark plum veiled in incense. Floral, elegant and quietly mysterious.",
+    description: [
+      "Fleur de Nuit follows white flowers into the evening, when their scent grows heavier and the garden turns blue. Tuberose and jasmine sambac meet black plum, then darken into incense and benzoin.",
+      "Elegant rather than sweet, it leaves a deliberate trail — the fragrance someone asks about after you have gone.",
+    ],
+    notes: {
+      top: ["Black plum", "Bergamot", "Saffron"],
+      heart: ["Tuberose absolute", "Jasmine sambac", "Damask rose"],
+      base: ["Olibanum", "Benzoin", "Patchouli heart"],
+    },
+    character: { intensity: 4, sillage: 4, longevity: 4, mood: ["Elegant", "Nocturnal", "Mysterious"] },
+    finder: { moments: ["night"], texture: "petals", presence: "bold" },
+    story: {
+      title: "Written at night",
+      body: "The first sketches were smelled only after sunset, on the theory that a night flower should be judged in its own hour.",
+    },
+    accent: "#6E2F3C",
+    images: gallery("fleur-de-nuit", "Fleur de Nuit", "with a single dark bloom in evening light"),
+    variants: ladder("fleur-de-nuit", [10500, 17500, 25500]),
+    defaultVariantId: "fleur-de-nuit-50",
+  },
+  {
+    slug: "ambre-09",
+    kind: "fragrance",
+    name: "Ambre 09",
+    number: "09",
+    family: "amber",
+    signature: true,
+    tagline: "Resin, skin and slow heat.",
+    summary: "Labdanum, golden resins and vanilla absolute. Sensual, enveloping and deep.",
+    description: [
+      "Ambre 09 is an amber built without sugar. Labdanum and Siam benzoin glow beneath a smoky veil of styrax, warmed by vanilla absolute and a trace of dried apricot.",
+      "Dense at first, it softens into the skin within the hour and remains there — a fragrance for cold months and close conversations.",
+    ],
+    notes: {
+      top: ["Dried apricot", "Clove bud", "Mandarin"],
+      heart: ["Labdanum", "Styrax", "Immortelle"],
+      base: ["Siam benzoin", "Vanilla absolute", "Ambergris accord"],
+    },
+    character: { intensity: 5, sillage: 4, longevity: 5, mood: ["Sensual", "Enveloping", "Golden"] },
+    finder: { moments: ["dusk", "night"], texture: "resins", presence: "bold" },
+    story: {
+      title: "Ninth light",
+      body: "Named for the ninth hour of the evening, when the last daylight turns the colour of resin held up to a window.",
+    },
+    accent: "#8A4614",
+    images: gallery("ambre-09", "Ambre 09", "with pieces of golden resin in long evening light"),
+    variants: ladder("ambre-09", [10500, 17500, 25500]),
+    defaultVariantId: "ambre-09-50",
+  },
+  {
+    slug: "sillage-blanc",
+    kind: "fragrance",
+    name: "Sillage Blanc",
+    number: "01",
+    family: "musk",
+    signature: true,
+    tagline: "Clean linen, warm skin.",
+    summary: "White musks, aldehydes and iris over pale woods. Clean, luminous and understated.",
+    description: [
+      "Sillage Blanc is the scent of a freshly made bed in morning light — linen dried in the sun, the faint powder of iris, and skin underneath it all.",
+      "Soft-spoken and luminous, it is the fragrance people mistake for your own natural scent. Wear it alone or beneath any other Veyra composition.",
+    ],
+    notes: {
+      top: ["Aldehydes", "Pear blossom", "Pink pepper"],
+      heart: ["Orris", "Cotton flower", "Ambrette seed"],
+      base: ["White musks", "Cashmeran", "Blonde woods"],
+    },
+    character: { intensity: 2, sillage: 2, longevity: 3, mood: ["Clean", "Luminous", "Understated"] },
+    finder: { moments: ["day"], texture: "skin", presence: "close" },
+    story: {
+      title: "The first composition",
+      body: "Number 01 was meant as a base layer for the house — a blank page. It became the fragrance most often worn on its own.",
+    },
+    accent: "#CFC3AF",
+    images: gallery("sillage-blanc", "Sillage Blanc", "beside folded white linen"),
+    variants: ladder("sillage-blanc", [9500, 15500, 22500]),
+    defaultVariantId: "sillage-blanc-50",
+  },
+  {
+    slug: "iris-poudre",
+    kind: "fragrance",
+    name: "Iris Poudré",
+    number: "06",
+    family: "floral",
+    tagline: "Powder, paper and violet light.",
+    summary: "Orris butter, violet and soft suede. A powdery floral with the hush of an old library.",
+    description: [
+      "Iris Poudré captures the cool, earthy elegance of orris root — the most patient material in perfumery. Violet leaf and carrot seed open onto a heart of buttery iris, then fall into suede and paper-dry musk.",
+      "Refined and slightly melancholic, it suits grey days, galleries and quiet confidence.",
+    ],
+    notes: {
+      top: ["Violet leaf", "Carrot seed", "Bergamot"],
+      heart: ["Orris butter", "Heliotrope", "Mimosa"],
+      base: ["Suede", "Paper musk", "Vetiver"],
+    },
+    character: { intensity: 3, sillage: 3, longevity: 3, mood: ["Powdery", "Poised", "Melancholic"] },
+    finder: { moments: ["day", "dusk"], texture: "petals", presence: "trail" },
+    story: {
+      title: "A patient material",
+      body: "Orris root rests for years before it gives up its scent. The house borrowed that patience: this formula was revised for longer than any other.",
+    },
+    accent: "#8E7FA8",
+    images: gallery("iris-poudre", "Iris Poudré", "with a fallen violet flower"),
+    variants: ladder("iris-poudre", [10500, 17500, 25500]),
+    defaultVariantId: "iris-poudre-50",
+  },
+  {
+    slug: "vetiver-fume",
+    kind: "fragrance",
+    name: "Vétiver Fumé",
+    number: "14",
+    family: "woody",
+    tagline: "Rain on stone, smoke in the distance.",
+    summary: "Smoked vetiver, grapefruit and mineral accords. Dry, green and composed.",
+    description: [
+      "Vétiver Fumé opens with grapefruit and cold mineral air before the roots take over — earthy vetiver, birch smoke and a quiet thread of black tea.",
+      "Dry and architectural, it has the calm of a stone courtyard after rain.",
+    ],
+    notes: {
+      top: ["Grapefruit", "Juniper", "Mineral accord"],
+      heart: ["Haitian vetiver", "Black tea", "Clary sage"],
+      base: ["Birch smoke", "Guaiac wood", "Ambroxan"],
+    },
+    character: { intensity: 3, sillage: 3, longevity: 4, mood: ["Dry", "Composed", "Green"] },
+    finder: { moments: ["day"], texture: "woods", presence: "trail" },
+    story: {
+      title: "After rain",
+      body: "Sketched from a single memory: a courtyard of wet limestone, and somewhere beyond the wall, a fire being lit.",
+    },
+    accent: "#62522A",
+    images: gallery("vetiver-fume", "Vétiver Fumé", "with a tied bundle of vetiver grass"),
+    variants: ladder("vetiver-fume", [9800, 16500, 24000]),
+    defaultVariantId: "vetiver-fume-50",
+  },
+  {
+    slug: "discovery-set",
+    kind: "set",
+    name: "The Discovery Set",
+    number: "—",
+    family: "set",
+    tagline: "Six fragrances. Six days. One signature.",
+    summary: "All six Veyra eaux de parfum in 2 ml vials, presented in an ivory linen-paper box.",
+    description: [
+      "The most considered way to choose a fragrance is to live with it. The Discovery Set holds every Veyra composition in a 2 ml spray vial — enough to wear each one for several days.",
+      "Begin with whichever calls to you, wear it from morning until evening, and notice which one people remember you by.",
+    ],
+    contents: ["Sillage Blanc", "Santal No. 04", "Iris Poudré", "Ambre 09", "Fleur de Nuit", "Vétiver Fumé"],
+    accent: "#A98B69",
+    images: [
+      { src: "/images/products/discovery-set-1.webp", alt: "The Discovery Set: six miniature vials in an ivory tray, with the box lid leaning behind" },
+      { src: "/images/products/discovery-set-2.webp", alt: "The Discovery Set displayed on a long travertine plinth in window light" },
+    ],
+    variants: [{ id: "discovery-set-6x2", label: "6 × 2 ml", sizeMl: 12, price: 3800 }],
+    defaultVariantId: "discovery-set-6x2",
+  },
+];
+
+export const families: Record<Family, { label: string; description: string; mood: string }> = {
+  woody: {
+    label: "Woody",
+    description: "Sandalwood, cedar and vetiver. Grounded, warm and close to the skin.",
+    mood: "For those who find comfort in calm.",
+  },
+  floral: {
+    label: "Floral",
+    description: "Tuberose, iris and rose, composed with shadow rather than sweetness.",
+    mood: "For those drawn to elegance with a secret.",
+  },
+  amber: {
+    label: "Amber",
+    description: "Resins, labdanum and vanilla. Deep, golden and enveloping.",
+    mood: "For those who like to be remembered.",
+  },
+  musk: {
+    label: "Musk",
+    description: "White musks and soft woods that smell of clean skin and linen.",
+    mood: "For those who prefer to be discovered.",
+  },
+};
